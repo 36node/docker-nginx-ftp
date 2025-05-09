@@ -10,7 +10,7 @@ services:
       - FTP_USER=36node
       - FTP_PASSWORD=123456
       - FTP_SERVER=192.168.5.112
-      # - FTP_REMOTE_DIR=/ht  路径必须以 / 开头
+      # - FTP_REMOTE_DIR=/ht  路径必须以 / 开头 如果根目录不需要填
       - FTP_RETAIN_DAYS=7
 
   ftp:

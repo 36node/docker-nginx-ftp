@@ -21,7 +21,7 @@ curlftpfs ftp://$FTP_USER:$FTP_PASSWORD@$FTP_SERVER$FTP_REMOTE_DIR /mnt/ftp -o a
 if [ -n "$FTP_RETAIN_DAYS" ]; then
   echo "Starting cron as FTP_RETAIN_DAYS is set to $FTP_RETAIN_DAYS"
   # 配置 crontab 每 5 分钟执行一次
-  echo "*/2 * * * * /clear.sh >> /var/log/cron.log 2>&1" | crontab -
+  echo "*/5 * * * * /clear.sh >> /var/log/cron.log 2>&1" | crontab -
   # 启动 cron 服务
   service cron start
 else
