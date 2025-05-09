@@ -1,0 +1,31 @@
+services:
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    privileged: true
+    ports:
+      - "8080:80"
+    environment:
+      - FTP_USER=36node
+      - FTP_PASSWORD=123456
+      - FTP_SERVER=192.168.5.112
+      # - FTP_REMOTE_DIR=/ht  路径必须以 / 开头
+      - FTP_RETAIN_DAYS=7
+
+  ftp:
+    image: dotkevinwong/vsftpd-arm
+    # image: fauria/vsftpd ## for x86
+    environment:
+      - FTP_USER=36node
+      - FTP_PASS=123456
+      - PASV_MIN_PORT=21100
+      - PASV_MAX_PORT=21110
+      - PASV_ADDRESS=192.168.5.112
+      - LOG_STDOUT=YES
+    ports:
+      - '20:20/tcp'
+      - '21:21/tcp'
+      - '21100-21110:21100-21110/tcp'
+    volumes:
+      - '/tmp/ftp:/home/vsftpd'
