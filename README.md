@@ -9,13 +9,13 @@ A docker image for nginx, while mounting ftp as a local folder
 ## Envrionment
 
 - FTP_SERVER: server ip
-- FTP_USER: username 
+- FTP_USER: username
 - FTP_PASSWORD: password
 - FTP_REMOTE_DIR: ftp remove directory
 - FTP_MOUNT_POINT: mount folder in container
 - FTP_RETAIN_DAYS: The file retention days are optional. If set, it will regularly clean up the files in ftp.
 
-## docker-compose 
+## docker-compose
 
 ```yaml
 services:
@@ -31,7 +31,7 @@ services:
       - FTP_PASSWORD=123456
       - FTP_SERVER=192.168.5.112
       # - FTP_REMOTE_DIR=/ht  路径必须以 / 开头
-      - FTP_RETAIN_DAYS=7
+      - FTP_RETAIN_DAYS=7 # 以当前时间2025-07-28 16:00:00为例，当 FTP_RETAIN_DAYS 为1时，会删除 2025-07-27 00:00:00点前的数据，即最多保留两天的数据
 
   ftp:
     image: dotkevinwong/vsftpd-arm
@@ -44,9 +44,9 @@ services:
       - PASV_ADDRESS=192.168.5.112
       - LOG_STDOUT=YES
     ports:
-      - '20:20/tcp'
-      - '21:21/tcp'
-      - '21100-21110:21100-21110/tcp'
+      - "20:20/tcp"
+      - "21:21/tcp"
+      - "21100-21110:21100-21110/tcp"
     volumes:
-      - '/tmp/ftp:/home/vsftpd'
+      - "/tmp/ftp:/home/vsftpd"
 ```
