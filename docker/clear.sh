@@ -7,7 +7,9 @@
 echo "Starting cleanup of files older than $FTP_RETAIN_DAYS days."
 
 # 删除早于 FTP_RETAIN_DAYS 天的文件
-find /mnt/ftp -type f -mtime +$FTP_RETAIN_DAYS -delete
+n=$((FTP_RETAIN_DAYS+1))
+dt=$(date -d "1 day ago $(date -d '1 second ago' +'%H:%M:%S')" +"%Y-%m-%d %H:%M:%S")
+find /mnt/ftp -type f ! -newermt "$dt" -delete
 
 # 打印清理完成的日志
 echo "Cleanup completed."
