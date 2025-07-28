@@ -31,7 +31,7 @@ services:
       - FTP_PASSWORD=123456
       - FTP_SERVER=192.168.5.112
       # - FTP_REMOTE_DIR=/ht  路径必须以 / 开头
-      - FTP_RETAIN_DAYS=7 # 以当前时间2025-07-28 16:00:00为例，当 FTP_RETAIN_DAYS 为1时，会删除 2025-07-27 00:00:00点前的数据，即最多保留两天的数据
+      - FTP_RETAIN_DAYS=7 # 以当前时间2025-07-28 16:21:30为例，当 FTP_RETAIN_DAYS 为1时，会删除 2025-07-27 16:21:30前的数据，即仅保留24小时的数据
 
   ftp:
     image: dotkevinwong/vsftpd-arm
