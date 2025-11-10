@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/36node/docker-nginx-ftp/compare/v1.1.0...v1.1.1) (2025-11-10)
+
+
+### Bug Fixes
+
+* clean ([ad091b0](https://github.com/36node/docker-nginx-ftp/commit/ad091b08d6d2b07ca1a24d230b60d7a5c8c9af46))
+
 ## [1.1.0](https://github.com/36node/docker-nginx-ftp/compare/v1.0.0...v1.1.0) (2025-07-28)
 
 
